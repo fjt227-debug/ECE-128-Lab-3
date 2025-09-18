@@ -20,7 +20,18 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module FourBitFullAdderDisplay(
+module FourBitFullAdderDisplay1(A,B,CI,seg, an, dp, CO);
+    input [3:0] A,B;
+    input CI;
+    output [6:0] seg;
+    output [3:0] an;
+    output dp;
+    output CO;
+
+    wire [3:0] sum;
+
+    FourBitFARippleCarry u1(.A1(A), .B1(B), .CI(CI), .S1(sum), .CO(CO));
+    BCDtoSevenSegmentDisplay u2(.data_in(sum), .seg(seg), .an(an), .dp(dp));
     
 endmodule
 
